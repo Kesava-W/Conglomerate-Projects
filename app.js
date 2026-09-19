@@ -297,9 +297,10 @@
         try { return new URL(s.url).pathname.split("/")[1] || ""; } catch (e) { return ""; }
     };
 
-    function showNumbers() {
+    // The first load always fetches. Later refreshes only happen while the tab is in front.
+    function showNumbers(force) {
         const stats = window.StoryStats;
-        if (!stats || document.visibilityState === "hidden") { return; }
+        if (!stats || (!force && document.visibilityState === "hidden")) { return; }
 
         stats.summary().then((d) => {
             if (!d) { return; }   // the counter is unreachable: show nothing rather than an error
@@ -339,8 +340,11 @@
             apply(start);
 
             // The numbers refresh while the page stays open, so "reading now" stays current.
-            showNumbers();
+            showNumbers(true);
             setInterval(showNumbers, 60000);
+            document.addEventListener("visibilitychange", () => {
+                if (document.visibilityState === "visible") { showNumbers(true); }
+            });
         })
         .catch(() => {
             shelves.innerHTML = "<p>The stories could not be loaded. Please refresh the page.</p>";
