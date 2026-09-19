@@ -1,0 +1,97 @@
+{
+  "shelves": [
+    { "id": "thrillers", "title": "Thrillers" },
+    { "id": "heart", "title": "Romance & the Uncanny" }
+  ],
+  "stories": [
+    {
+      "slug": "the-embezzler",
+      "title": "The Embezzler",
+      "tagline": "An ordinary MBA student in Mauritius. Nobody wonders what \"a break from coding\" means.",
+      "genres": ["Espionage Thriller", "Political Drama"],
+      "chapters": 27,
+      "status": "Complete",
+      "shelf": "thrillers",
+      "accent": "#ea8f4d",
+      "url": "https://kesava-w.github.io/The_Embezzler/",
+      "comic": "https://kesava-w.github.io/The_Embezzler/comic.html"
+    },
+    {
+      "slug": "why-she-chose-him",
+      "title": "Why She Chose Him",
+      "tagline": "She thought her village was a cage. He asked very little of her.",
+      "genres": ["Thriller", "Crime", "Romance"],
+      "chapters": 28,
+      "status": "Complete",
+      "shelf": "thrillers",
+      "accent": "#dc5468",
+      "url": "https://kesava-w.github.io/Why_She_Chose_Him/"
+    },
+    {
+      "slug": "a-silence-kept",
+      "title": "A Silence Kept",
+      "tagline": "A quiet man who says it all with his eyes, in a village that keeps its secrets.",
+      "genres": ["Rural Thriller", "Romance", "Crime"],
+      "chapters": 13,
+      "status": "Complete",
+      "shelf": "thrillers",
+      "accent": "#d8cfa8",
+      "url": "https://kesava-w.github.io/A_Silence_Kept/"
+    },
+    {
+      "slug": "the-protest",
+      "title": "The Protest",
+      "tagline": "A data entry operator with a perfect memory, willing to cross a line most people never approach.",
+      "genres": ["Crime Thriller", "Vigilante"],
+      "chapters": 6,
+      "status": "Complete",
+      "shelf": "thrillers",
+      "accent": "#c5cad3",
+      "url": "https://kesava-w.github.io/The_Protest/"
+    },
+    {
+      "slug": "kleem",
+      "title": "Kleem",
+      "tagline": "The boy who spent his childhood saying one word, and the man he became.",
+      "genres": ["Devotional Fantasy", "Romance"],
+      "chapters": 25,
+      "status": "Complete",
+      "shelf": "heart",
+      "accent": "#f2b640",
+      "url": "https://kesava-w.github.io/Kleem/"
+    },
+    {
+      "slug": "the-rakshasa",
+      "title": "The Rakshasa",
+      "tagline": "Protective, intelligent, and far more dangerous than he appears.",
+      "genres": ["Urban Fantasy", "Supernatural Drama"],
+      "chapters": 11,
+      "status": "Complete",
+      "shelf": "heart",
+      "accent": "#ea5a4a",
+      "url": "https://kesava-w.github.io/The_Rakshasa/"
+    },
+    {
+      "slug": "the-cunning-psychic",
+      "title": "The Cunning Psychic",
+      "tagline": "He always knows more than he says.",
+      "genres": ["Psychological Mystery", "Supernatural"],
+      "chapters": 6,
+      "status": "Ongoing",
+      "shelf": "heart",
+      "accent": "#5fa8e8",
+      "url": "https://kesava-w.github.io/The_Cunning_Psychic/"
+    },
+    {
+      "slug": "the-slide-changer",
+      "title": "The Slide Changer",
+      "tagline": "The one who asks the question everyone else would rather avoid.",
+      "genres": ["Contemporary Romance", "Relationship Drama"],
+      "chapters": 20,
+      "status": "Complete",
+      "shelf": "heart",
+      "accent": "#f39ac0",
+      "url": "https://kesava-w.github.io/The_Slide_Changer/"
+    }
+  ]
+}
