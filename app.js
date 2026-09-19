@@ -79,6 +79,7 @@
 
         body.classList.toggle("focused", focused);
         body.style.setProperty("--accent", s ? s.accent : DEFAULT_ACCENT);
+        resetChrome();
         stage.hidden = !focused;
         $("#backBtn").hidden = !focused;
 
@@ -147,7 +148,70 @@
         if (!frame.dataset.url) { return; }
         clearTimeout(slowTimer);
         loading.classList.add("done");
+        watchScroll();
     });
+
+    // ---------- phones: retract the cover strip and title row ----------
+
+    // Two things can hide them: scrolling the story (auto), or tapping the handle (manual).
+    // A tap on the handle wins until the next story is opened.
+    const handle = $("#chromeHandle");
+    const phone = matchMedia("(max-width: 760px)");
+    let autoHidden = false;
+    let manualHidden = null;
+
+    const chromeHidden = () => (manualHidden === null ? autoHidden : manualHidden);
+
+    function syncChrome() {
+        const hidden = !!current.slug && chromeHidden();
+        body.classList.toggle("chrome-hidden", hidden);
+        handle.setAttribute("aria-expanded", String(!hidden));
+        handle.setAttribute("aria-label", hidden ? "Show the story bar" : "Hide the story bar");
+    }
+
+    function resetChrome() {
+        autoHidden = false;
+        manualHidden = null;
+        syncChrome();
+    }
+
+    handle.addEventListener("click", () => {
+        manualHidden = !chromeHidden();
+        syncChrome();
+    });
+
+    // The stories live on the same site as this page, so their scrolling can be watched.
+    // If a story is ever on another site the browser refuses, and only the handle is used.
+    function watchScroll() {
+        let win;
+        try {
+            win = frame.contentWindow;
+            void win.document;
+        } catch (e) {
+            return;
+        }
+
+        let lastY = win.scrollY || 0;
+        let travel = 0;
+
+        win.addEventListener("scroll", () => {
+            if (!phone.matches) { return; }
+            const y = win.scrollY || 0;
+            const dy = y - lastY;
+            lastY = y;
+
+            if (y < 48) {
+                travel = 0;
+                autoHidden = false;
+            } else {
+                if (Math.sign(dy) !== Math.sign(travel)) { travel = 0; }
+                travel += dy;
+                if (travel > 24) { autoHidden = true; }
+                if (travel < -24) { autoHidden = false; }
+            }
+            syncChrome();
+        }, { passive: true });
+    }
 
     // ---------- routing: #/story and #/story/comic ----------
 
