@@ -6,7 +6,7 @@
     // Cover sizes come from srcset. `sizes` tells the browser how wide the picture will
     // actually be, so it can pick the smallest file that still looks sharp on this screen.
     const HOME_SIZES = "(min-width: 1240px) 280px, (min-width: 901px) 22vw, 45vw";
-    const RAIL_SIZES = "(min-width: 761px) 108px, 58px";
+    const RAIL_SIZES = "(min-width: 761px) 108px, 44px";
 
     const $ = (sel) => document.querySelector(sel);
     const body = document.body;
@@ -196,6 +196,7 @@
     });
 
     $("#backBtn").addEventListener("click", goHome);
+    $("#stageBack").addEventListener("click", goHome);
 
     $(".brand").addEventListener("click", (e) => {
         if (current.slug) { e.preventDefault(); goHome(); }

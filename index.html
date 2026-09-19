@@ -36,6 +36,8 @@
     <section class="stage" id="stage" aria-label="Story viewer" hidden>
 
         <div class="stage-bar">
+            <button type="button" class="stage-back" id="stageBack" aria-label="Back to all stories">&larr;</button>
+
             <div class="stage-title">
                 <strong id="stageTitle"></strong>
                 <span id="stageGenres"></span>
@@ -47,7 +49,7 @@
             </nav>
 
             <div class="stage-actions">
-                <a id="openNew" class="pill" href="#" target="_blank" rel="noopener">Open<span class="long"> in New Tab</span> <span aria-hidden="true">&#8599;</span></a>
+                <a id="openNew" class="pill" href="#" target="_blank" rel="noopener" aria-label="Open in a new tab"><span class="word">Open in New Tab </span><span aria-hidden="true">&#8599;</span></a>
                 <button type="button" id="fsBtn" class="pill" hidden>Fullscreen</button>
             </div>
         </div>
