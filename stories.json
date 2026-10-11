@@ -69,7 +69,8 @@
       "status": "Complete",
       "shelf": "heart",
       "accent": "#ea5a4a",
-      "url": "https://kesava-w.github.io/The_Rakshasa/"
+      "url": "https://kesava-w.github.io/The_Rakshasa/",
+      "comic": "https://kesava-w.github.io/The_Rakshasa/comic.html"
     },
     {
       "slug": "the-cunning-psychic",
@@ -80,7 +81,8 @@
       "status": "Ongoing",
       "shelf": "heart",
       "accent": "#5fa8e8",
-      "url": "https://kesava-w.github.io/The_Cunning_Psychic/"
+      "url": "https://kesava-w.github.io/The_Cunning_Psychic/",
+      "comic": "https://kesava-w.github.io/The_Cunning_Psychic/comic.html"
     },
     {
       "slug": "the-slide-changer",
