@@ -25,7 +25,8 @@
       "status": "Complete",
       "shelf": "thrillers",
       "accent": "#dc5468",
-      "url": "https://kesava-w.github.io/Why_She_Chose_Him/"
+      "url": "https://kesava-w.github.io/Why_She_Chose_Him/",
+      "comic": "https://kesava-w.github.io/Why_She_Chose_Him/comic.html"
     },
     {
       "slug": "a-silence-kept",
@@ -93,7 +94,8 @@
       "status": "Complete",
       "shelf": "heart",
       "accent": "#f39ac0",
-      "url": "https://kesava-w.github.io/The_Slide_Changer/"
+      "url": "https://kesava-w.github.io/The_Slide_Changer/",
+      "comic": "https://kesava-w.github.io/The_Slide_Changer/comic.html"
     }
   ]
 }
