@@ -357,6 +357,32 @@ button:focus-visible {
     border: 0;
 }
 
+/* Phones only: a small grab handle that hides or shows the cover strip and title row. */
+.chrome-handle {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 24px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    color: var(--ink);
+    background: rgba(17, 17, 20, .72);
+    backdrop-filter: blur(6px);
+    font-size: .8rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.chrome-handle::before { content: "\25B4"; }
+body.chrome-hidden .chrome-handle::before { content: "\25BE"; }
+
 .loading {
     position: absolute;
     inset: 0;
@@ -493,6 +519,26 @@ body.focused .tile .actions { display: none; }
 
     body.focused .tile { width: 44px; border-radius: 8px; }
     body.focused .tile .body { display: none; }
+
+    /* Retracting: the strip and the title row shrink to nothing, and the story grows into the space. */
+    .chrome-handle { display: flex; }
+
+    body.focused .shelves,
+    .stage-bar {
+        overflow-y: hidden;
+        transition: max-height .25s ease, padding .25s ease, border-width .25s ease;
+    }
+
+    body.focused .shelves { max-height: 100px; }
+    .stage-bar { max-height: 100px; overflow-x: hidden; }
+
+    body.focused.chrome-hidden .shelves,
+    body.chrome-hidden .stage-bar {
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-width: 0;
+    }
 
     body.focused .stage {
         margin: 0;
