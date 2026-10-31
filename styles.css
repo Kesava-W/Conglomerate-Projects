@@ -279,6 +279,23 @@ button:focus-visible {
     border-bottom: 1px solid var(--line);
 }
 
+/* Only shown on phones, where the top bar is hidden. */
+.stage-back {
+    display: none;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    font-size: 1.1rem;
+    color: var(--ink);
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 .stage-title {
     display: flex;
     flex-direction: column;
@@ -458,16 +475,23 @@ body.focused .tile .actions { display: none; }
         grid-template-rows: auto minmax(0, 1fr);
     }
 
+    /* Reading space matters most here: the top bar goes while a story is open, and the
+       back arrow moves into the story's title row. */
+    body.focused { --bar-h: 0px; }
+    body.focused .topbar { display: none; }
+    .stage-back { display: inline-flex; }
+
     body.focused .shelves {
         flex-direction: row;
         overflow-x: auto;
         overflow-y: hidden;
         gap: 8px;
-        padding: 8px 12px;
+        padding: 6px 12px;
         border-bottom: 1px solid var(--line);
+        scrollbar-width: none;
     }
 
-    body.focused .tile { width: 58px; }
+    body.focused .tile { width: 44px; border-radius: 8px; }
     body.focused .tile .body { display: none; }
 
     body.focused .stage {
@@ -481,7 +505,7 @@ body.focused .tile .actions { display: none; }
     .stage-title { flex: 1 1 0; }
     .stage-title strong { font-size: 1rem; }
     .stage-title span,
-    .long,
+    .word,
     #fsBtn { display: none; }
     .seg a { padding: 6px 12px; }
     .pill { padding: 6px 12px; }
