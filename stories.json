@@ -49,7 +49,8 @@
       "status": "Complete",
       "shelf": "thrillers",
       "accent": "#c5cad3",
-      "url": "https://kesava-w.github.io/The_Protest/"
+      "url": "https://kesava-w.github.io/The_Protest/",
+      "comic": "https://kesava-w.github.io/The_Protest/comic.html"
     },
     {
       "slug": "kleem",
@@ -60,7 +61,8 @@
       "status": "Complete",
       "shelf": "heart",
       "accent": "#f2b640",
-      "url": "https://kesava-w.github.io/Kleem/"
+      "url": "https://kesava-w.github.io/Kleem/",
+      "comic": "https://kesava-w.github.io/Kleem/comic.html"
     },
     {
       "slug": "the-rakshasa",
