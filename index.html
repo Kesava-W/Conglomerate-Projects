@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Stories - Kesava Nittala</title>
+<meta name="description" content="Eight stories by Kesava Nittala. Pick one and read it right here.">
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<header class="topbar">
+    <a class="brand" href="./" aria-label="All stories">
+        <span class="brand-name">Stories</span>
+        <span class="brand-by">by Kesava Nittala</span>
+    </a>
+    <button type="button" class="back" id="backBtn" hidden>&larr; All stories</button>
+</header>
+
+<div class="layout" id="layout">
+
+    <section class="hero" id="hero">
+        <h1>Eight stories.</h1>
+        <p>Choose one and it opens right here. The others wait on the side.</p>
+    </section>
+
+    <main class="shelves" id="shelves" aria-label="Stories">
+        <noscript><p>This page needs JavaScript. The stories are also available directly at kesava-w.github.io.</p></noscript>
+    </main>
+
+    <section class="stage" id="stage" aria-label="Story viewer" hidden>
+
+        <div class="stage-bar">
+            <div class="stage-title">
+                <strong id="stageTitle"></strong>
+                <span id="stageGenres"></span>
+            </div>
+
+            <nav class="seg" id="modeSeg" aria-label="What to open">
+                <a id="modeRead" href="#">Read</a>
+                <a id="modeComic" href="#" hidden>Comic</a>
+            </nav>
+
+            <div class="stage-actions">
+                <a id="openNew" class="pill" href="#" target="_blank" rel="noopener">Open<span class="long"> in New Tab</span> <span aria-hidden="true">&#8599;</span></a>
+                <button type="button" id="fsBtn" class="pill" hidden>Fullscreen</button>
+            </div>
+        </div>
+
+        <div class="frame-wrap">
+            <div class="loading" id="loading">
+                <img id="loadingImg" alt="">
+                <div class="spinner" aria-hidden="true"></div>
+                <p class="slow" id="slow" hidden>Still loading. You can <a id="slowLink" href="#" target="_blank" rel="noopener">open it in a new tab</a> instead.</p>
+            </div>
+            <iframe id="frame" title="Story" allow="fullscreen" allowfullscreen></iframe>
+        </div>
+
+    </section>
+
+</div>
+
+<footer class="foot" id="foot">&copy; 2026 Kesava Nittala</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
