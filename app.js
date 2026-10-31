@@ -33,7 +33,7 @@
     // ---------- build the page ----------
 
     function tileHtml(s, sizes) {
-        const meta = `${s.chapters} chapters` + (s.status === "Ongoing" ? `<span class="badge">Ongoing</span>` : "");
+        const meta = `${s.chapters} chapters<span class="reads"></span>` + (s.status === "Ongoing" ? `<span class="badge">Ongoing</span>` : "");
         const comic = s.comic ? `<a class="btn" href="#/${s.slug}/comic">Comic</a>` : "";
         return `
         <article class="tile" data-slug="${s.slug}" style="--accent:${s.accent}">
@@ -288,6 +288,38 @@
         });
     }
 
+    // ---------- visit numbers ----------
+
+    const NUMBER_WORDS = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve"];
+
+    // A story's counts are kept under its site name, which is the first part of its address.
+    const siteName = (s) => {
+        try { return new URL(s.url).pathname.split("/")[1] || ""; } catch (e) { return ""; }
+    };
+
+    function showNumbers() {
+        const stats = window.StoryStats;
+        if (!stats || document.visibilityState === "hidden") { return; }
+
+        stats.summary().then((d) => {
+            if (!d) { return; }   // the counter is unreachable: show nothing rather than an error
+            const f = stats.format;
+
+            const line = $("#hubStats");
+            const parts = [stats.count(d.site.visits, "visit"), stats.count(d.site.reads, "chapter read"), `♥ ${f(d.site.likes)}`];
+            if (d.site.now > 0) { parts.push(`${f(d.site.now)} reading now`); }
+            line.textContent = parts.join("  ·  ");
+            line.hidden = false;
+
+            tiles.forEach((t) => {
+                const s = bySlug.get(t.dataset.slug);
+                const n = d.stories[siteName(s)];
+                const reads = t.querySelector(".reads");
+                if (reads && n && n.reads > 0) { reads.textContent = ` · ${stats.count(n.reads, "read")}`; }
+            });
+        });
+    }
+
     // ---------- start ----------
 
     fetch("stories.json")
@@ -297,11 +329,18 @@
         })
         .then((data) => {
             bySlug = new Map(data.stories.map((s) => [s.slug, s]));
+
+            const count = data.stories.length;
+            $(".hero h1").textContent = `${NUMBER_WORDS[count] || count} ${count === 1 ? "story" : "stories"}.`;
             // Opening a link like #/kleem goes straight to that story, without the animation.
             const start = parseHash();
             render(data, !!start.slug);
             current = start;
             apply(start);
+
+            // The numbers refresh while the page stays open, so "reading now" stays current.
+            showNumbers();
+            setInterval(showNumbers, 60000);
         })
         .catch(() => {
             shelves.innerHTML = "<p>The stories could not be loaded. Please refresh the page.</p>";
